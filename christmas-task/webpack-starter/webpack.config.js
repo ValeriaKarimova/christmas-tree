@@ -12,14 +12,6 @@ module.exports = {
 
     devServer: {
         static: './dist',
-        // historyApiFallback: true,
-        // static: {
-        //     directory: path.join(__dirname, 'dist'),
-        //   },
-        // open: true,
-        // compress: true,
-        // hot: true,
-        // port: 8080,
     },
 
     output: {
@@ -51,12 +43,6 @@ module.exports = {
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 type: 'asset/resource',
-                // use: [
-                    // {
-                        // loader: 'file-loader',
-                    // },
-                // ],
-                
             },
 
             {
