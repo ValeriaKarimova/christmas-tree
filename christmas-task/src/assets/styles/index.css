@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font: 400 35px "Neucha", serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+a:hover {
+    color: #278D9F;
+    
+}
+
+body {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.header,
+.footer {
+    background-color: #121C1E;
+}
+
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__element-nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navigation__main-page,
+.navigation__toys-page,
+.navigation__tree-page {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    padding: 10px 75px 10px 0;
+}
+
+.navigation__main-page {
+    padding: 10px 0px;
+    margin-left: 20px;
+    height: 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../svg/tree.svg);
+}
+
+.navigation__main-page:hover,
+.footer__element__github-link:hover,
+.footer__element__school-link:hover {
+    filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%);
+}
+
+
+
+.main {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: calc(100vh - 100px);
+    background-image: url(../bg.jpg);
+}
+
+.main__intro {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.main__intro__block-text {
+    font: 400 53px "Neucha", serif;
+    padding: 15px;
+}
+
+.main__intro__block-text,
+.main__intro__block__start-button {
+    border: 2px solid #278D9F;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    background-color: rgba(31, 112, 127, .3);
+    text-align: center;
+}
+
+.main__intro__block__start-button {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 25px;
+    padding: 10px 30px;
+    outline: .1px solid;
+}
+
+.main__intro__block__start-button:hover {
+    transition: .5s;
+    transform: scale(1.1);
+    cursor: pointer;
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+}
+
+.footer {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer__element {
+    margin: 10px 20px;
+}
+
+.footer__element__github-link {
+    display: inline-block;
+    width: 110px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../svg/github.svg);
+}
+
+.footer__element__school-link {
+    display: inline-block;
+    width: 110px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../svg/rss.svg);
+}
