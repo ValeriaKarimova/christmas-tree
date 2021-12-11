@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html,
@@ -55,7 +56,7 @@ body {
     display: inline-block;
     width: 100px;
     height: 50px;
-    padding: 10px 75px 10px 0;
+    padding: 10px 170px 10px 0;
 }
 
 .navigation__main-page {
@@ -77,6 +78,7 @@ body {
 
 .main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     position: relative;
     height: calc(100vh - 100px);
@@ -111,11 +113,12 @@ body {
     letter-spacing: 3px;
     font-size: 25px;
     padding: 10px 30px;
-    outline: .1px solid;
+    outline: 1px solid;
 }
 
-.main__intro__block__start-button:hover {
-    transition: .5s;
+.main__intro__block__start-button:hover,
+.filters-block__sort__button:hover {
+    transition: .7s;
     transform: scale(1.1);
     cursor: pointer;
     outline-color: rgba(255, 255, 255, 0);

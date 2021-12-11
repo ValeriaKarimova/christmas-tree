@@ -1,0 +1,169 @@
+.main__filters-block,
+.toys-block {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.filters-block__appearance,
+.filters-block__amount,
+.filters-block__sort {
+    width: 500px;
+    height: 300px;
+    backdrop-filter: blur(6px);
+    background-color: rgba(31, 112, 127, .3);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20px;
+}
+
+.filters-block-text {
+    font: 400 25px "Neucha", sans-serif;
+    letter-spacing: 2px;
+    padding: 10px 15px;
+}
+
+.filters-block__shape__text,
+.filters-block__color__text,
+.filters-block__size__text,
+.filters-block__favorite__text {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.shape__button,
+.color__button,
+.size__button,
+.favorite__checkbox {
+    cursor: pointer;
+    vertical-align: middle;
+    background-color: transparent;
+    border: 0;
+}
+
+.shape__button {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.shape__button:hover,
+.size__button:hover {
+    filter: invert(11%) sepia(50%) saturate(500%) hue-rotate(328deg) brightness(90%) contrast(100%);
+}
+
+.shape__round {
+    background-image: url(../svg/ball.svg);
+}
+
+.shape__bell {
+    background-image: url(../svg/bell.svg);
+}
+
+.shape__cone {
+    background-image: url(../svg/cone.svg);
+}
+
+.shape__snow {
+    background-image: url(../svg/snow.svg);
+}
+
+.shape__character {
+    background-image: url(../svg/toy.svg);
+}
+
+.color__button {
+    margin-left: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15%;
+}
+
+.color__button:hover {
+    border: 2px solid #B8860B;
+}
+
+.color__white {
+    background-color: #FFFFFF;
+}
+.color__yellow {
+    background-color: #FFFF00;
+}
+.color__red {
+    background-color: #FF0000;
+}
+
+.color__blue {
+    background-color: #0000FF;
+}
+
+.color__green {
+    background-color: #008000;
+}
+
+.size__button {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../svg/ball.svg);
+    margin-left: 10px;
+}
+
+.size__large {
+    width: 50px;
+    height: 50px;
+}
+
+.size__average {
+    width: 40px;
+    height: 40px;
+}
+
+.size__small {
+    width: 30px;
+    height: 30px;
+}
+
+.favorite__checkbox {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+}
+
+.selection,
+.filters-block__sort__button {
+    height: 40px;
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    margin: 10px 0;
+    border-radius: 20px;
+    border: 1px solid #278D9F;
+    background-color: rgba(31, 112, 127, .3);
+}
+
+.selection {
+    background-image: url(../svg/arrow-down.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 340px center;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    width: 380px;
+    padding: 5px 25px;
+    margin-bottom: 100px;
+    line-height: 28px;
+}
+
+.filters-block__sort__button {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 250px;
+    outline: 1px solid;
+}

@@ -1,7 +1,12 @@
 import './assets/styles/index.css';
+import './assets/styles/toys.css';
+import './slider.js';
 import * as _ from 'lodash';
 
 
-// import ball2 from './assets/ball/2.png';
+
+
+
+
 
 

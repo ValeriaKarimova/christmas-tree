@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neucha&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
     <title>Christmas Tree</title>
   </head>
 
@@ -16,32 +19,108 @@
           <a class="navigation__toys-page" href="#">Игрушки</a>
           <a class="navigation__tree-page" href="#">Ёлка</a>
         </nav>
-        <div class="header__element-controls">
-
-        </div>
+        <div class="header__element-controls"></div>
       </header>
 
       <main class="main">
-        <div class="main__intro">
+        <div class="main__filters-block">
+          <div class="filters-block filters-block__appearance">
+            <h2 class="filters-block-text">Фильтры по значению</h2>
+            <div class="filters-block__shape shape">
+              <h4 class="filters-block__shape__text">Форма:</h4>
+              <button class="shape__button shape__round"></button>
+              <button class="shape__button shape__bell"></button>
+              <button class="shape__button shape__cone"></button>
+              <button class="shape__button shape__snow"></button>
+              <button class="shape__button shape__character"></button>
+            </div>
+
+            <div class="filters-block__color color">
+              <h4 class="filters-block__color__text">Цвет:</h4>
+              <button class="color__button color__white"></button>
+              <button class="color__button color__yellow"></button>
+              <button class="color__button color__red"></button>
+              <button class="color__button color__blue"></button>
+              <button class="color__button color__green"></button>
+            </div>
+
+            <div class="filters-block__size size">
+              <h4 class="filters-block__size__text">Размер:</h4>
+              <button class="size__button size__large"></button>
+              <button class="size__button size__average"></button>
+              <button class="size__button size__small"></button>
+            </div>
+
+            <div class="filters-block__favorite favorite">
+              <h4 class="filters-block__favorite__text">Любимые:</h4>
+              <input class="favorite__checkbox" type="checkbox" />
+            </div>
+          </div>
+
+          <div class="filters-block filters-block__amount">
+            <h2 class="filters-block-text">Фильтры по количеству</h2>
+            
+            <div class="filters-block__amount__slider slider__count">
+              <h4 class="filters-block__amount__slider__text">Количество экземпляров:</h4>
+              <div class="slider__count__base">
+                <output class="slider__count__base__output">1</output>
+                <div id="count__range"></div>
+                <output class="slider__count__base__output">12</output>
+              </div>
+            </div>
+            
+            <div class="filters-block__amount__slider slider__year">
+              <h4 class="filters-block__amount__slider__text">Год приобретения:</h4>
+              <div class="slider__year__base">
+                <output class="slider__year__base__output">1940</output>
+                <div id="year__range"></div>
+                <output class="slider__year__base__output">2020</output>
+              </div>
+            </div>
+
+            
+            
+          </div>
+          <div class="filters-block filters-block__sort">
+            <h2 class="filters-block-text">Сортировка</h2>
+            <select class="filters-block__sort__select selection">
+              <option value="selection__min-max" selected>По возрастанию</option>
+              <option value="selection__max-min">По убыванию</option>
+              <option value="selection__name-a">По имени от А до Я</option>
+              <option value="selection__name-z">По имени от Я до А</option>
+            </select>
+            <button class="filters-block__sort__button" type="reset">Сброс фильтров</button>
+          </div>
+        </div>
+        <div class="main__toys-block toys-block"></div>
+
+        <!-- <div class="main__intro">
           <div class="main__intro__block">
             <h1 class="main__intro__block-text">Помогите бабушке<br>нарядить елку</h1>
           </div>
           <div class="main__intro__block">
             <button class="main__intro__block__start-button">Начать</button>
           </div>
-        </div>
+        </div> -->
       </main>
-      
+
       <footer class="footer">
         <div class="footer__element">
-          <a class="footer__element__github-link" href="https://github.com/rolling-scopes-school/valeriakarimova-JSFE2021Q3"></a>
+          <a
+            class="footer__element__github-link"
+            href="https://github.com/rolling-scopes-school/valeriakarimova-JSFE2021Q3"
+          ></a>
         </div>
         <div class="footer__element">
           <span class="footer__element__year">&copy;2021</span>
         </div>
         <div class="footer__element">
-          <a class="footer__element__school-link" href="https://rs.school/js/"></a>
+          <a
+            class="footer__element__school-link"
+            href="https://rs.school/js/"
+          ></a>
         </div>
+
       </footer>
     </div>
   </body>
