@@ -23,6 +23,10 @@
       </header>
 
       <main class="main">
+        
+      </main>
+
+      <template id="toys__page">
         <div class="main__filters-block">
           <div class="filters-block filters-block__appearance">
             <h2 class="filters-block-text">Фильтры по значению</h2>
@@ -77,8 +81,6 @@
                 <output class="slider__year__base__output">2020</output>
               </div>
             </div>
-
-            
             
           </div>
           <div class="filters-block filters-block__sort">
@@ -92,17 +94,41 @@
             <button class="filters-block__sort__button" type="reset">Сброс фильтров</button>
           </div>
         </div>
-        <div class="main__toys-block toys-block"></div>
+        <div class="main__toys-block toys-block">
+          
+        </div>
+      </template>
 
-        <!-- <div class="main__intro">
-          <div class="main__intro__block">
-            <h1 class="main__intro__block-text">Помогите бабушке<br>нарядить елку</h1>
+      <template id="toy__card-template">
+        <div class="toys-block__card toy-card">
+          <h3 class="toy-card__text"></h3>
+          <div class="toy-card__content">
+            <div class="toy-card__content__img">
+              <!-- <img class="toy-card__content__img__ball" src="./assets/toys/1.png" alt="ball"> -->
+              <div class="toy-card__content__img__flag"></div>
+            </div>
+            <div class="toy-card__content__description">
+              <p>Количество: <span class="amount"></span></p>
+              <p>Год покупки: <span class="year"></span></p>
+              <p>Форма: <span class="shape"></span></p>
+              <p>Цвет: <span class="color"></span></p>
+              <p>Размер: <span class="size"></span></p>
+              <p>Любимая: <span class="favorite"></span></p>
+            </div>
           </div>
-          <div class="main__intro__block">
-            <button class="main__intro__block__start-button">Начать</button>
+        </div>
+      </template>
+
+        <template id="initial__page">
+          <div class="main__intro">
+            <div class="main__intro__block">
+              <h1 class="main__intro__block-text">Помогите бабушке<br>нарядить елку</h1>
+            </div>
+            <div class="main__intro__block">
+              <button class="main__intro__block__start-button">Начать</button>
+            </div>
           </div>
-        </div> -->
-      </main>
+      </template>
 
       <footer class="footer">
         <div class="footer__element">
