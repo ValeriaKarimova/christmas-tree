@@ -18,6 +18,7 @@ class ToysView {
             cardView.querySelector('.color').innerHTML = info.color;
             cardView.querySelector('.size').innerHTML = info.size;
             cardView.querySelector('.favorite').innerHTML = info.favorite;
+            cardView.querySelector('.toy-card__content__img').setAttribute("style", `background-image: url(../assets/toys/${info.num}.png)`)
         }
     }
 }

@@ -181,10 +181,12 @@
     height: 280px;
     border-radius: 10px;
     border: 1px solid #278D9F;
-    background-color: rgba(31, 112, 127, .3)
+    background-color: rgba(31, 112, 127, .3);
+    margin-bottom: 20px;
 }
 
 .toy-card__text {
+    margin: 15px 0;
     text-align: center;
 }
 
@@ -193,7 +195,10 @@
 }
 
 .toy-card__content__img {
-    width: 40%;
+    width: 30%;
+    margin: 10px 15px 0 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .toy-card__content__img__flag {

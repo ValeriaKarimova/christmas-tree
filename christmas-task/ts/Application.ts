@@ -2,7 +2,11 @@ import IntroView from './IntroView';
 import TreeView from './TreeView';
 import ToysView from './ToysView';
 
+
 class Application {
+
+
+
     init () {
         const introView = new IntroView(() => this.onToysClick());
         introView.init();

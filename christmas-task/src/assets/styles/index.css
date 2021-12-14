@@ -39,6 +39,8 @@ body {
 }
 
 .header {
+    position: relative;
+    z-index: 3;
     height: 80px;
     display: flex;
     justify-content: space-between;
@@ -119,8 +121,6 @@ body {
     filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%);
 }
 
-
-
 .main {
     min-height: 800px;
     display: flex;
@@ -128,6 +128,55 @@ body {
     align-items: center;
     position: relative;
     background-image: url(../bg.jpg);
+}
+
+
+
+.main__intro__ball1 {
+    width: 500px;
+    height: 500px;
+    left: calc(50% - 550px);
+    top: 150px;
+    background-image: url(../ball/1.png);
+}
+
+.main__intro__ball1,
+.main__intro__ball2 {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.main__intro__ball2 {
+    width: 300px;
+    height: 300px;
+    left: calc(50% + 150px);
+    top: 150px;
+    background-image: url(../ball/2.png);
+}
+
+.main__intro__ball1::before,
+.main__intro__ball2::before {
+    content: "";
+    position: absolute;
+    background-color: #aaa;
+    z-index: 0;
+}
+
+.main__intro__ball1::before {
+    top: -210px;
+    left: calc(50% - 47px);
+    width: 4px;
+    height: 220px;
+    width: 5px;
+}
+
+.main__intro__ball2::before {
+    top: -205px;
+    left: calc(50% - 32px);
+    width: 4px;
+    height: 210px;
+    width: 5px;
 }
 
 .main__intro {
