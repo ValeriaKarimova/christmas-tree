@@ -34,6 +34,12 @@
     margin-right: 15px;
 }
 
+.shape__buttons-wrapper,
+.color__buttons-wrapper,
+.size__buttons-wrapper {
+    display: inline-block;
+}
+
 .shape__button,
 .color__button,
 .size__button,
@@ -42,7 +48,10 @@
     vertical-align: middle;
     background-color: transparent;
     border: 0;
+    color: transparent;
+    font-size: 2px;
 }
+
 
 .shape__button {
     width: 40px;
@@ -128,10 +137,13 @@
     height: 30px;
 }
 
-.favorite__checkbox {
-    width: 25px;
-    height: 25px;
-    margin-left: 15px;
+.shape__button.active,
+.size__button.active {
+    filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+}
+
+.color__button.active {
+    border: 2px solid #B8860B;
 }
 
 .selection,
