@@ -310,8 +310,10 @@
   margin-bottom: 25px;
 }
 
-.slider__count__base__output,
-.slider__year__base__output {
+.slider__count__base__output-min,
+.slider__count__base__output-max,
+.slider__year__base__output-min,
+.slider__year__base__output-max {
   display: inline-flex;
   justify-content: center;
   align-items: center;

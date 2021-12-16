@@ -6,18 +6,22 @@ class Filter {
     shape: Array<string>
     color: Array<string>
     size: Array<string>
-    isFavorite: Array<string>;
-    countMin: Array<string>
-    countMax: Array<string>
-    yearMin: Array<string>
-    yearMax: Array<string>
+    isFavorite: Boolean;
+    countMin: number;
+    countMax: number;
+    yearMin: number;
+    yearMax: number;
     sorting: SortType
 
     constructor () {
         this.shape = [];
         this.color = [];
         this.size = [];
-        this.isFavorite = [];
+        this.isFavorite = false;
+        this.countMin = 0;
+        this.countMax = 0;
+        this.yearMin = 0;
+        this.yearMax = 0;
     }
 
   store() {
