@@ -1,13 +1,16 @@
 import IntroView from './IntroView';
 import TreeView from './TreeView';
 import ToysView from './ToysView';
+import Filter from './Filter';
+import Data from "../src/data.json";
 
 
 class Application {
 
-
+    filter: Filter;
 
     init () {
+        this.filter = new Filter(); 
         const introView = new IntroView(() => this.onToysClick());
         introView.init();
 
@@ -21,7 +24,7 @@ class Application {
 
     onToysClick() {
         console.log("onToysClick")
-        const toysView = new ToysView();
+        const toysView = new ToysView(this.filter);
         toysView.init();
     }
 
@@ -36,6 +39,7 @@ class Application {
         const treeView = new TreeView();
         treeView.init();
     }
+
 
 }
 
