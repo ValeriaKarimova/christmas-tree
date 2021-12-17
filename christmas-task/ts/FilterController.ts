@@ -1,7 +1,6 @@
 import Filter from "./Filter";
 import * as noUiSlider from "nouislider";
 import "../src/assets/styles/nouislider.css";
-import SortType from "./SortType";
 
 
 class FilterController {

@@ -1,5 +1,5 @@
-import Data from "../src/data.json";
-import SortType from "./SortType";
+
+
 
 class Filter {
   

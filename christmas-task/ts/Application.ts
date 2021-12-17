@@ -31,6 +31,7 @@ class Application {
         console.log("onToysClick")
         const toysView = new ToysView(this.filter);
         toysView.init();
+        toysView.applyFilter();
     }
 
     onHomeClick() {
