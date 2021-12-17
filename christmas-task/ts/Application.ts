@@ -2,24 +2,29 @@ import IntroView from './IntroView';
 import TreeView from './TreeView';
 import ToysView from './ToysView';
 import Filter from './Filter';
-import Data from "../src/data.json";
+
 
 
 class Application {
 
     filter: Filter;
+    bbb: number;
+
+    constructor () {
+        this.filter = new Filter(); 
+        this.bbb = 6789;
+    }
 
     init () {
-        this.filter = new Filter(); 
         const introView = new IntroView(() => this.onToysClick());
         introView.init();
-
-        const homeButton = document.querySelector('.navigation__main-page');
-        const treeButton = document.querySelector('.navigation__tree-page');
-        const toysButton = document.querySelector('.navigation__toys-page');
+        const homeButton = document.querySelector('.navigation__main-page') as HTMLElement;
+        const treeButton = document.querySelector('.navigation__tree-page') as HTMLElement;
+        const toysButton = document.querySelector('.navigation__toys-page') as HTMLElement;
         toysButton.addEventListener('click', () => this.onToysClick());
         treeButton.addEventListener('click', () => this.onTreeClick());
         homeButton.addEventListener('click', () => this.onHomeClick());
+
     } 
 
     onToysClick() {

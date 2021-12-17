@@ -22,6 +22,7 @@ class Filter {
         this.countMax = 0;
         this.yearMin = 0;
         this.yearMax = 0;
+        this.sorting = 2;
     }
 
   store() {

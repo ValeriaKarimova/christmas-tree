@@ -11,7 +11,7 @@ class ToysView {
     }
 
     init() {
-        const basicPart = document.querySelector('.main');
+        const basicPart = document.querySelector('.main') as HTMLElement;
         basicPart.innerHTML = '';
         const pageContent = document.querySelector('#toys__page') as HTMLTemplateElement;
         basicPart.append(pageContent.content.cloneNode(true));
