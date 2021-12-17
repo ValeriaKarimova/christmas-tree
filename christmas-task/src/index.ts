@@ -5,7 +5,6 @@ import * as _ from 'lodash';
 
 
 const app = new Application();
-console.log(app)
 app.init();
 
 

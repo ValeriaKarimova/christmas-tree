@@ -38,17 +38,17 @@ class FilterController {
       this.filter.isFavorite = !this.filter.isFavorite;
       this.callback();
     });
-
     this.initCountSlider();
     this.initYearSlider();
     this.getSortValue();
     this.resetFiltration();
+    this.updateFilterView();
   }
 
   initCountSlider() {
 
     noUiSlider.create(this.countSlider, {
-      start: [1, 12],
+      start: [this.filter.countMin, this.filter.countMax],
       connect: true,
       step: 1,
       range: {
@@ -77,7 +77,7 @@ class FilterController {
 
   initYearSlider() {
     noUiSlider.create(this.yearSlider, {
-      start: [1940, 2020],
+      start: [this.filter.yearMin, this.filter.yearMax],
       step: 10,
       range: {
         min: [1940],
@@ -106,6 +106,9 @@ class FilterController {
     const filterButtons = document.querySelector(wrapper) as HTMLElement;
     filterButtons.addEventListener("click", (event) => {
       const clickedButton = event.target as HTMLElement;
+      if(clickedButton.tagName !== "BUTTON") {
+        return;
+      }
 
       if (filtrationType.includes(clickedButton.innerHTML)) {
         filtrationType.splice(
@@ -125,11 +128,13 @@ class FilterController {
     this.updateButtonGroup(".shape__button", this.filter.shape);
     this.updateButtonGroup(".color__button", this.filter.color);
     this.updateButtonGroup(".size__button", this.filter.size);
-    this.selectedOption.value = "ascendingOrder";
-    this.countSlider.noUiSlider.set([1, 12]);
-    this.yearSlider.noUiSlider.set([1940, 2020]);
+    this.checkBox.checked = this.filter.isFavorite;
+    this.selectedOption.value = this.filter.sorting;
 
-    this.checkBox.checked = false;
+    console.log(this.countSlider)
+
+    this.countSlider.noUiSlider.set([this.filter.countMin, this.filter.countMax]);
+    this.yearSlider.noUiSlider.set([this.filter.yearMin, this.filter.yearMax]);
   }
 
   updateSliderView() {
@@ -153,33 +158,27 @@ class FilterController {
 
   getSortValue() {
     this.selectedOption.addEventListener("change", () => {
-      if (this.selectedOption.value == "ascendingOrder") {
-        this.filter.sorting = SortType.ascendingOrder;
-      } else if (this.selectedOption.value == "descendingOrder") {
-        this.filter.sorting = SortType.descendingOrder;
-      } else if (this.selectedOption.value == "alphabeticOrder") {
-        this.filter.sorting = SortType.alphabeticOrder;
-      } else if (this.selectedOption.value == "alphabeticOrderRevert") {
-        this.filter.sorting = SortType.alphabeticOrderRevert;
-      }
+      this.filter.sorting = this.selectedOption.value;
       this.callback();
     });
   }
 
   resetFiltration() {
     
-    const resetButton = document.querySelector(
-      ".filters-block__sort__button"
-    ) as HTMLElement;
+    const resetButton = document.querySelector(".filters-block__sort__button") as HTMLElement;
+
     resetButton.addEventListener("click", () => {
+
       this.filter.shape = [];
       this.filter.color = [];
       this.filter.size = [];
       this.filter.isFavorite = false;
-      this.filter.countMin = 0;
-      this.filter.countMax = 0;
-      this.filter.yearMin = 0;
-      this.filter.yearMax = 0;
+      this.filter.countMin = 1;
+      this.filter.countMax = 12;
+      this.filter.yearMin = 1940;
+      this.filter.yearMax = 2020;
+      this.filter.sorting = "ascendingOrder";
+
       this.updateFilterView();
       this.callback();
     });

@@ -6,12 +6,12 @@ class Filter {
     shape: Array<string>
     color: Array<string>
     size: Array<string>
-    isFavorite: Boolean;
+    isFavorite: boolean;
     countMin: number;
     countMax: number;
     yearMin: number;
     yearMax: number;
-    sorting: SortType
+    sorting: string;
 
     constructor () {
         this.shape = [];
@@ -22,15 +22,30 @@ class Filter {
         this.countMax = 0;
         this.yearMin = 0;
         this.yearMax = 0;
-        this.sorting = 2;
+        this.sorting = "ascendingOrder";
     }
 
   store() {
-    console.log("store to Local");
+    localStorage.setItem('filter', JSON.stringify(this));
   }
 
   restore() {
-    console.log("restore from Local");
+    const savedData = localStorage.getItem('filter');
+    if (savedData === undefined || savedData === null) {
+        return;
+    }
+    const json = JSON.parse(savedData);
+    this.shape = json.shape;
+    this.color = json.color;
+    this.size = json.size;
+    this.isFavorite = json.isFavorite;
+    this.countMin = json.countMin;
+    this.countMax = json.countMax;
+    this.yearMin = json.yearMin;
+    this.yearMax = json.yearMax;
+    this.sorting = json.sorting;
+
+    console.log ();
   }
 }
 

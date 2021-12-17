@@ -8,14 +8,14 @@ import Filter from './Filter';
 class Application {
 
     filter: Filter;
-    bbb: number;
 
     constructor () {
-        this.filter = new Filter(); 
-        this.bbb = 6789;
+        this.filter = new Filter();
+        this.filter.restore();
     }
 
     init () {
+
         const introView = new IntroView(() => this.onToysClick());
         introView.init();
         const homeButton = document.querySelector('.navigation__main-page') as HTMLElement;

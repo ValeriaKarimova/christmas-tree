@@ -36,10 +36,10 @@ class ToysView {
     }
 
     onFilterUpdated() {
-        console.log(this.filter)
-
-        
+        this.filter.store();
     }
+
+    
 
 }
 
