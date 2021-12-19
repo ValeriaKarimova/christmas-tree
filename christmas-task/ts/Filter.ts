@@ -1,40 +1,36 @@
-
-
-
 class Filter {
-  
-    shape: Array<string>
-    color: Array<string>
-    size: Array<string>
-    isFavorite: boolean;
-    countMin: number;
-    countMax: number;
-    yearMin: number;
-    yearMax: number;
-    sorting: string;
-    userInput: string;
+  shape: Array<string>;
+  color: Array<string>;
+  size: Array<string>;
+  isFavorite: boolean;
+  countMin: number;
+  countMax: number;
+  yearMin: number;
+  yearMax: number;
+  sorting: string;
+  userInput: string;
 
-    constructor () {
-        this.shape = [];
-        this.color = [];
-        this.size = [];
-        this.isFavorite = false;
-        this.countMin = 1;
-        this.countMax = 12;
-        this.yearMin = 1940;
-        this.yearMax = 2020;
-        this.sorting = "ascendingOrder";
-        this.userInput = '';
-    }
+  constructor() {
+    this.shape = [];
+    this.color = [];
+    this.size = [];
+    this.isFavorite = false;
+    this.countMin = 1;
+    this.countMax = 12;
+    this.yearMin = 1940;
+    this.yearMax = 2020;
+    this.sorting = "ascendingOrder";
+    this.userInput = "";
+  }
 
   store() {
-    localStorage.setItem('filter', JSON.stringify(this));
+    localStorage.setItem("filter", JSON.stringify(this));
   }
 
   restore() {
-    const savedData = localStorage.getItem('filter');
+    const savedData = localStorage.getItem("filter");
     if (savedData === undefined || savedData === null) {
-        return;
+      return;
     }
     const json = JSON.parse(savedData);
     this.shape = json.shape;
@@ -46,8 +42,6 @@ class Filter {
     this.yearMin = json.yearMin;
     this.yearMax = json.yearMax;
     this.sorting = json.sorting;
-
-    console.log ();
   }
 }
 

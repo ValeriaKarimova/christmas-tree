@@ -16,7 +16,11 @@ class FilterController {
   yearSlider: noUiSlider.target;
   countSlider: noUiSlider.target;
 
-  constructor(filter: Filter, callback: () => void, sortingCallback: () => void) {
+  constructor(
+    filter: Filter,
+    callback: () => void,
+    sortingCallback: () => void
+  ) {
     this.filter = filter;
     this.callback = callback;
     this.sortingCallback = sortingCallback;
@@ -64,8 +68,10 @@ class FilterController {
     this.updateFilterView();
   }
 
-  initUserInput(){
-    const searchInput = document.querySelector(".controls__search") as HTMLInputElement;
+  initUserInput() {
+    const searchInput = document.querySelector(
+      ".controls__search"
+    ) as HTMLInputElement;
     searchInput.addEventListener("input", () => {
       this.filter.userInput = searchInput.value.trim() as string;
       this.callback();
@@ -108,6 +114,7 @@ class FilterController {
     noUiSlider.create(this.yearSlider, {
       start: [this.filter.yearMin, this.filter.yearMax],
       step: 10,
+      connect: true,
       range: {
         min: [1940],
         max: [2020],
@@ -163,8 +170,6 @@ class FilterController {
     this.checkBox.checked = this.filter.isFavorite;
     this.selectedOption.value = this.filter.sorting;
 
-    console.log(this.countSlider);
-
     this.countSlider.noUiSlider.set([
       this.filter.countMin,
       this.filter.countMax,
@@ -212,7 +217,6 @@ class FilterController {
       this.filter.countMax = 12;
       this.filter.yearMin = 1940;
       this.filter.yearMax = 2020;
-      this.filter.sorting = "ascendingOrder";
 
       this.updateFilterView();
       this.callback();

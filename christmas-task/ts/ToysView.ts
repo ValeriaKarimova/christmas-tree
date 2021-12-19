@@ -17,15 +17,18 @@ class ToysView {
     ) as HTMLTemplateElement;
     basicPart.append(pageContent.content.cloneNode(true));
 
-    const filterController = new FilterController(this.filter, () => this.onFilterUpdated(), () => this.sortCards());
+    const filterController = new FilterController(
+      this.filter,
+      () => this.onFilterUpdated(),
+      () => this.sortCards()
+    );
     filterController.init();
     this.sortCards();
   }
 
   createCards() {
-
     const cardHolder = document.querySelector(".main__toys-block");
-    cardHolder.innerHTML = '';
+    cardHolder.innerHTML = "";
     for (let info of Data) {
       const cardContent = document.querySelector(
         "#toy__card-template"
@@ -52,17 +55,13 @@ class ToysView {
     }
   }
 
-
-
   onFilterUpdated() {
     this.filter.store();
-    
+
     this.applyFilter();
   }
 
-  applyFilter() {    
-    this.pickToys();
-    
+  applyFilter() {
     document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
       if (this.isSatisfy(card)) {
         card.setAttribute("style", "display: block");
@@ -76,16 +75,21 @@ class ToysView {
     let result = true;
     const amount = +card.querySelector(".amount").innerHTML;
     const year = +card.querySelector(".year").innerHTML;
-    
-   
-    
-    if (this.filter.userInput != ''){
-      if(card.querySelector('.toy-card__text').innerHTML.search(this.filter.userInput) == -1) {
+
+    if (this.filter.userInput != "") {
+      if (
+        card
+          .querySelector(".toy-card__text")
+          .innerHTML.search(this.filter.userInput) == -1
+      ) {
         result = false;
       }
     }
 
-    if(this.filter.isFavorite && card.querySelector(".favorite").innerHTML !== "Да") {
+    if (
+      this.filter.isFavorite &&
+      card.querySelector(".favorite").innerHTML !== "Да"
+    ) {
       result = false;
     }
 
@@ -122,32 +126,41 @@ class ToysView {
   }
 
   pickToys() {
-    let pickedToys = document.querySelector('.controls__selected__count');
-    let count = 0
-    document.querySelectorAll('.toy-card').forEach((card) => {
-      card.addEventListener('click', () => {
-        card.querySelector('.toy-card__content__img__flag').classList.contains('picked') ? count-- : count++
+    let pickedToys = document.querySelector(".controls__selected__count");
+    let count = 0;
+    document.querySelectorAll(".toy-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        card
+          .querySelector(".toy-card__content__img__flag")
+          .classList.contains("picked")
+          ? count--
+          : count++;
+        if (count > 20) {
+          alert("Извините, все слоты заполнены");
+          return;
+        }
         pickedToys.innerHTML = String(count);
-        card.querySelector('.toy-card__content__img__flag').classList.toggle('picked');
-
-      })
-    })
+        card
+          .querySelector(".toy-card__content__img__flag")
+          .classList.toggle("picked");
+      });
+    });
   }
 
   sortCards() {
-    if (this.filter.sorting == 'alphabeticOrder') {
-      Data.sort((a, b) => a.name > b.name ? 1 : -1);
-  } else if (this.filter.sorting == 'alphabeticOrderRevert') {
-      Data.sort((a, b) => a.name < b.name ? 1 : -1);
-  } else if (this.filter.sorting == 'ascendingOrder') {
-    Data.sort((a, b) => a.year > b.year ? 1 : -1);
-  } else if (this.filter.sorting == 'descendingOrder') {
-    Data.sort((a, b) => a.year < b.year ? 1 : -1);
+    if (this.filter.sorting == "alphabeticOrder") {
+      Data.sort((a, b) => (a.name > b.name ? 1 : -1));
+    } else if (this.filter.sorting == "alphabeticOrderRevert") {
+      Data.sort((a, b) => (a.name < b.name ? 1 : -1));
+    } else if (this.filter.sorting == "ascendingOrder") {
+      Data.sort((a, b) => (a.year > b.year ? 1 : -1));
+    } else if (this.filter.sorting == "descendingOrder") {
+      Data.sort((a, b) => (a.year < b.year ? 1 : -1));
+    }
+    this.createCards();
+    this.applyFilter();
+    this.pickToys();
   }
-  this.createCards();
-  this.applyFilter();
-}
-
 }
 
 export default ToysView;
