@@ -12,17 +12,19 @@ class Filter {
     yearMin: number;
     yearMax: number;
     sorting: string;
+    userInput: string;
 
     constructor () {
         this.shape = [];
         this.color = [];
         this.size = [];
         this.isFavorite = false;
-        this.countMin = 0;
-        this.countMax = 0;
-        this.yearMin = 0;
-        this.yearMax = 0;
+        this.countMin = 1;
+        this.countMax = 12;
+        this.yearMin = 1940;
+        this.yearMax = 2020;
         this.sorting = "ascendingOrder";
+        this.userInput = '';
     }
 
   store() {

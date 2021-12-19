@@ -49,15 +49,17 @@ class ToysView {
     }
   }
 
+
+
+
   onFilterUpdated() {
     this.filter.store();
     this.applyFilter();
   }
 
-  applyFilter() {
-    const collection = document.querySelectorAll(".toy-card");
-
-    collection.forEach((card: HTMLElement) => {
+  applyFilter() {    
+    
+    document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
       if (this.isSatisfy(card)) {
         card.setAttribute("style", "display: block");
       } else {
@@ -70,6 +72,14 @@ class ToysView {
     let result = true;
     const amount = +card.querySelector(".amount").innerHTML;
     const year = +card.querySelector(".year").innerHTML;
+    
+   
+    
+    if (this.filter.userInput != ''){
+      if(card.querySelector('.toy-card__text').innerHTML.search(this.filter.userInput) == -1) {
+        result = false;
+      }
+    }
 
     if(this.filter.isFavorite && card.querySelector(".favorite").innerHTML !== "Да") {
       result = false;
@@ -106,6 +116,7 @@ class ToysView {
 
     return result;
   }
+
 }
 
 export default ToysView;

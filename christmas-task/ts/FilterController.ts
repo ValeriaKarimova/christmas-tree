@@ -2,7 +2,6 @@ import Filter from "./Filter";
 import * as noUiSlider from "nouislider";
 import "../src/assets/styles/nouislider.css";
 
-
 class FilterController {
   filter: Filter;
   callback: () => void;
@@ -13,19 +12,35 @@ class FilterController {
   checkBox: HTMLInputElement;
   selectedOption: HTMLInputElement;
   yearSlider: noUiSlider.target;
-  countSlider: noUiSlider.target
+  countSlider: noUiSlider.target;
 
   constructor(filter: Filter, callback: () => void) {
     this.filter = filter;
     this.callback = callback;
-    this.countMinOutput = document.querySelector(".slider__count__base__output-min") as HTMLElement;
-    this.countMaxOutput = document.querySelector(".slider__count__base__output-max")  as HTMLElement;
-    this.yearMinOutput = document.querySelector(".slider__year__base__output-min")  as HTMLElement;
-    this.yearMaxOutput = document.querySelector(".slider__year__base__output-max")  as HTMLElement;
-    this.checkBox = document.querySelector(".favorite__checkbox-input") as HTMLInputElement;
-    this.selectedOption = document.querySelector(".filters-block__sort__select") as HTMLInputElement;
-    this.countSlider = document.getElementById("count__range") as noUiSlider.target;
-    this.yearSlider = document.getElementById("year__range") as noUiSlider.target;
+    this.countMinOutput = document.querySelector(
+      ".slider__count__base__output-min"
+    ) as HTMLElement;
+    this.countMaxOutput = document.querySelector(
+      ".slider__count__base__output-max"
+    ) as HTMLElement;
+    this.yearMinOutput = document.querySelector(
+      ".slider__year__base__output-min"
+    ) as HTMLElement;
+    this.yearMaxOutput = document.querySelector(
+      ".slider__year__base__output-max"
+    ) as HTMLElement;
+    this.checkBox = document.querySelector(
+      ".favorite__checkbox-input"
+    ) as HTMLInputElement;
+    this.selectedOption = document.querySelector(
+      ".filters-block__sort__select"
+    ) as HTMLInputElement;
+    this.countSlider = document.getElementById(
+      "count__range"
+    ) as noUiSlider.target;
+    this.yearSlider = document.getElementById(
+      "year__range"
+    ) as noUiSlider.target;
   }
 
   init() {
@@ -39,13 +54,21 @@ class FilterController {
     });
     this.initCountSlider();
     this.initYearSlider();
+    this.initUserInput();
     this.getSortValue();
     this.resetFiltration();
     this.updateFilterView();
   }
 
-  initCountSlider() {
+  initUserInput(){
+    const searchInput = document.querySelector(".controls__search") as HTMLInputElement;
+    searchInput.addEventListener("input", () => {
+      this.filter.userInput = searchInput.value.trim() as string;
+      this.callback();
+    });
+  }
 
+  initCountSlider() {
     noUiSlider.create(this.countSlider, {
       start: [this.filter.countMin, this.filter.countMax],
       connect: true,
@@ -66,12 +89,15 @@ class FilterController {
 
     const self = this;
 
-    this.countSlider.noUiSlider.on("update", function (values: [], handle: Number) {
-      self.filter.countMin = values.at(0);
-      self.filter.countMax = values.at(1);
-      self.callback();
-      self.updateSliderView();
-    });
+    this.countSlider.noUiSlider.on(
+      "update",
+      function (values: [], handle: Number) {
+        self.filter.countMin = values.at(0);
+        self.filter.countMax = values.at(1);
+        self.callback();
+        self.updateSliderView();
+      }
+    );
   }
 
   initYearSlider() {
@@ -93,19 +119,22 @@ class FilterController {
     });
     const self = this;
 
-    this.yearSlider.noUiSlider.on("update", function (values: [], handle: Number) {
-      self.filter.yearMin = values.at(0);
-      self.filter.yearMax = values.at(1);
-      self.callback();
-      self.updateSliderView();
-    });
+    this.yearSlider.noUiSlider.on(
+      "update",
+      function (values: [], handle: Number) {
+        self.filter.yearMin = values.at(0);
+        self.filter.yearMax = values.at(1);
+        self.callback();
+        self.updateSliderView();
+      }
+    );
   }
 
   handleClicks(wrapper: string, filtrationType: Array<string>) {
     const filterButtons = document.querySelector(wrapper) as HTMLElement;
     filterButtons.addEventListener("click", (event) => {
       const clickedButton = event.target as HTMLElement;
-      if(clickedButton.tagName !== "BUTTON") {
+      if (clickedButton.tagName !== "BUTTON") {
         return;
       }
 
@@ -130,9 +159,12 @@ class FilterController {
     this.checkBox.checked = this.filter.isFavorite;
     this.selectedOption.value = this.filter.sorting;
 
-    console.log(this.countSlider)
+    console.log(this.countSlider);
 
-    this.countSlider.noUiSlider.set([this.filter.countMin, this.filter.countMax]);
+    this.countSlider.noUiSlider.set([
+      this.filter.countMin,
+      this.filter.countMax,
+    ]);
     this.yearSlider.noUiSlider.set([this.filter.yearMin, this.filter.yearMax]);
   }
 
@@ -163,11 +195,11 @@ class FilterController {
   }
 
   resetFiltration() {
-    
-    const resetButton = document.querySelector(".filters-block__sort__button") as HTMLElement;
+    const resetButton = document.querySelector(
+      ".filters-block__sort__button"
+    ) as HTMLElement;
 
     resetButton.addEventListener("click", () => {
-
       this.filter.shape = [];
       this.filter.color = [];
       this.filter.size = [];
