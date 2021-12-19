@@ -66,6 +66,8 @@ class ToysView {
         card.setAttribute("style", "display: none");
       }
     });
+
+    this.pickToys();
   }
 
   isSatisfy(card: HTMLElement): boolean {
@@ -115,6 +117,20 @@ class ToysView {
     }
 
     return result;
+  }
+
+  pickToys() {
+    let pickedToys = document.querySelector('.controls__selected__count');
+    let count = 0
+    document.querySelectorAll('.toy-card').forEach((card) => {
+      card.addEventListener('click', () => {
+        card.querySelector('.toy-card__content__img__flag').classList.contains('picked') ? count-- : count++
+        // console.log(count)
+        pickedToys.innerHTML = String(count);
+        card.querySelector('.toy-card__content__img__flag').classList.toggle('picked');
+
+      })
+    })
   }
 
 }

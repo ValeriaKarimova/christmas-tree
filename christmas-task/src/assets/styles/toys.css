@@ -222,6 +222,10 @@
     left: -8px;
 }
 
+.toy-card__content__img__flag.picked {
+    background: #CBB77A;
+}
+
 .toy-card__content__img__flag::after,
 .toy-card__content__img__flag::before {
     content: "";
@@ -235,6 +239,10 @@
     border-bottom: 20px solid transparent;
     border-left: 15px solid #24C5DB;
     right: -15px;
+}
+
+.picked.toy-card__content__img__flag::after {
+    border-left: 15px solid #CBB77A;
 }
 
 .toy-card__content__img__flag::before {
