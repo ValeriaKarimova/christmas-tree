@@ -5,6 +5,8 @@ import "../src/assets/styles/nouislider.css";
 class FilterController {
   filter: Filter;
   callback: () => void;
+  sortingCallback: () => void;
+
   countMinOutput: HTMLElement;
   countMaxOutput: HTMLElement;
   yearMinOutput: HTMLElement;
@@ -14,9 +16,11 @@ class FilterController {
   yearSlider: noUiSlider.target;
   countSlider: noUiSlider.target;
 
-  constructor(filter: Filter, callback: () => void) {
+  constructor(filter: Filter, callback: () => void, sortingCallback: () => void) {
     this.filter = filter;
     this.callback = callback;
+    this.sortingCallback = sortingCallback;
+
     this.countMinOutput = document.querySelector(
       ".slider__count__base__output-min"
     ) as HTMLElement;
@@ -190,7 +194,7 @@ class FilterController {
   getSortValue() {
     this.selectedOption.addEventListener("change", () => {
       this.filter.sorting = this.selectedOption.value;
-      this.callback();
+      this.sortingCallback();
     });
   }
 

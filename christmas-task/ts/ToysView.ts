@@ -17,12 +17,15 @@ class ToysView {
     ) as HTMLTemplateElement;
     basicPart.append(pageContent.content.cloneNode(true));
 
-    const filterController = new FilterController(this.filter, () =>
-      this.onFilterUpdated()
-    );
+    const filterController = new FilterController(this.filter, () => this.onFilterUpdated(), () => this.sortCards());
     filterController.init();
+    this.sortCards();
+  }
+
+  createCards() {
 
     const cardHolder = document.querySelector(".main__toys-block");
+    cardHolder.innerHTML = '';
     for (let info of Data) {
       const cardContent = document.querySelector(
         "#toy__card-template"
@@ -51,13 +54,14 @@ class ToysView {
 
 
 
-
   onFilterUpdated() {
     this.filter.store();
+    
     this.applyFilter();
   }
 
   applyFilter() {    
+    this.pickToys();
     
     document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
       if (this.isSatisfy(card)) {
@@ -66,8 +70,6 @@ class ToysView {
         card.setAttribute("style", "display: none");
       }
     });
-
-    this.pickToys();
   }
 
   isSatisfy(card: HTMLElement): boolean {
@@ -125,13 +127,26 @@ class ToysView {
     document.querySelectorAll('.toy-card').forEach((card) => {
       card.addEventListener('click', () => {
         card.querySelector('.toy-card__content__img__flag').classList.contains('picked') ? count-- : count++
-        // console.log(count)
         pickedToys.innerHTML = String(count);
         card.querySelector('.toy-card__content__img__flag').classList.toggle('picked');
 
       })
     })
   }
+
+  sortCards() {
+    if (this.filter.sorting == 'alphabeticOrder') {
+      Data.sort((a, b) => a.name > b.name ? 1 : -1);
+  } else if (this.filter.sorting == 'alphabeticOrderRevert') {
+      Data.sort((a, b) => a.name < b.name ? 1 : -1);
+  } else if (this.filter.sorting == 'ascendingOrder') {
+    Data.sort((a, b) => a.year > b.year ? 1 : -1);
+  } else if (this.filter.sorting == 'descendingOrder') {
+    Data.sort((a, b) => a.year < b.year ? 1 : -1);
+  }
+  this.createCards();
+  this.applyFilter();
+}
 
 }
 
