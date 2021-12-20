@@ -2,6 +2,7 @@
 .toys-block {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
 }
@@ -9,12 +10,13 @@
 .filters-block__appearance,
 .filters-block__amount,
 .filters-block__sort {
-  width: 500px;
+  max-width: 500px;
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding-left: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
   border-radius: 15px;
   backdrop-filter: blur(6px);
   background-color: rgba(31, 112, 127, 0.3);
@@ -149,6 +151,8 @@
 
 .filters-block__sort__button {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .selection,
@@ -165,7 +169,7 @@
 }
 
 .selection {
-  width: 380px;
+  max-width: 380px;
   padding: 5px 25px;
   appearance: none;
   border: 0;
