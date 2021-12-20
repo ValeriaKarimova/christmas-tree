@@ -146,8 +146,12 @@
     border: 2px solid #B8860B;
 }
 
-.selection,
 .filters-block__sort__button {
+    display: flex;
+}
+
+.selection,
+.button__reset {
     height: 40px;
     backdrop-filter: blur(6px);
     cursor: pointer;
@@ -173,10 +177,10 @@
     line-height: 28px;
 }
 
-.filters-block__sort__button {
+.button__reset {
     margin: 0 auto;
     margin-bottom: 20px;
-    width: 250px;
+    width: 200px;
     outline: 1px solid;
 }
 

@@ -64,7 +64,8 @@ class FilterController {
     this.initYearSlider();
     this.initUserInput();
     this.getSortValue();
-    this.resetFiltration();
+    this.onResetFilterClick();
+    this.onResetStorageClick();
     this.updateFilterView();
   }
 
@@ -203,24 +204,45 @@ class FilterController {
     });
   }
 
-  resetFiltration() {
-    const resetButton = document.querySelector(
-      ".filters-block__sort__button"
+  onResetFilterClick() {
+    const resetFilterButton = document.querySelector(
+      ".reset-filters"
     ) as HTMLElement;
 
-    resetButton.addEventListener("click", () => {
-      this.filter.shape = [];
-      this.filter.color = [];
-      this.filter.size = [];
-      this.filter.isFavorite = false;
-      this.filter.countMin = 1;
-      this.filter.countMax = 12;
-      this.filter.yearMin = 1940;
-      this.filter.yearMax = 2020;
+    resetFilterButton.addEventListener("click", () => this.resetFiltration());
+  }
 
-      this.updateFilterView();
-      this.callback();
+  resetStorage() {
+    localStorage.clear();
+    document.querySelector(".controls__selected__count").innerHTML = "0";
+    this.resetFiltration();
+    document.querySelectorAll(".toy-card").forEach((card) => {
+      card
+        .querySelector(".toy-card__content__img__flag")
+        .classList.remove("picked");
     });
+  }
+
+  resetFiltration() {
+    this.filter.shape.length = 0;
+    this.filter.color.length = 0;
+    this.filter.size.length = 0;
+    this.filter.isFavorite = false;
+    this.filter.countMin = 1;
+    this.filter.countMax = 12;
+    this.filter.yearMin = 1940;
+    this.filter.yearMax = 2020;
+
+    this.updateFilterView();
+    this.callback();
+  }
+
+  onResetStorageClick() {
+    const resetStorageButton = document.querySelector(
+      ".reset-settings"
+    ) as HTMLElement;
+
+    resetStorageButton.addEventListener("click", () => this.resetStorage());
   }
 }
 
