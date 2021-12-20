@@ -135,8 +135,8 @@ class ToysView {
           .classList.contains("picked")
           ? count--
           : count++;
-        if (count > 20) {
-          alert("Извините, все слоты заполнены");
+        if (count > 2) {
+          this.showPopup("Извините, все слоты заполнены!")
           return;
         }
         pickedToys.innerHTML = String(count);
@@ -160,6 +160,22 @@ class ToysView {
     this.createCards();
     this.applyFilter();
     this.pickToys();
+  }
+
+  showPopup(errorText: string) {
+    const basicPart = document.querySelector(".main") as HTMLElement;
+    const popupContent = document.querySelector(
+      "#popup__window"
+      ) as HTMLTemplateElement;
+      basicPart.append(popupContent.content.cloneNode(true));
+      document.querySelector('.popup__error-message').innerHTML = errorText;
+      const popupButton = document.querySelector('.popup__button-ok');
+      popupButton.addEventListener('click', () => this.hidePopup());
+  }
+
+  hidePopup() {
+    const popup = document.querySelector(".popup__window__wrapper");
+    popup.setAttribute('style', 'display: none');
   }
 }
 
