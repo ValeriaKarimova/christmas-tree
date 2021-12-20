@@ -10,6 +10,7 @@ class IntroView {
     const pageContent = document.querySelector(
       "#initial__page"
     ) as HTMLTemplateElement;
+
     basicPart.append(pageContent.content.cloneNode(true));
     const startButton = document.querySelector(
       ".main__intro__block__start-button"

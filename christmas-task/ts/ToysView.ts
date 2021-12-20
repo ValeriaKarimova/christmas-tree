@@ -1,4 +1,4 @@
-import Data from "../src/data.json";
+import toyCardsData from "../src/data.json";
 import Filter from "./Filter";
 import FilterController from "./FilterController";
 
@@ -29,45 +29,44 @@ class ToysView {
   createCards() {
     const cardHolder = document.querySelector(".main__toys-block");
     cardHolder.innerHTML = "";
-    for (let info of Data) {
+
+    toyCardsData.forEach((toyInfo) => {
       const cardContent = document.querySelector(
         "#toy__card-template"
       ) as HTMLTemplateElement;
       const cardView = cardContent.content.firstElementChild.cloneNode(
         true
       ) as HTMLDivElement;
+
       cardHolder.append(cardView);
-      cardView.querySelector(".toy-card__text").innerHTML = info.name;
-      cardView.querySelector(".amount").innerHTML = info.count;
-      cardView.querySelector(".year").innerHTML = info.year;
-      cardView.querySelector(".shape").innerHTML = info.shape;
-      cardView.querySelector(".color").innerHTML = info.color;
-      cardView.querySelector(".size").innerHTML = info.size;
-      cardView.querySelector(".favorite").innerHTML = info.favorite
+      cardView.querySelector(".toy-card__text").innerHTML = toyInfo.name;
+      cardView.querySelector(".amount").innerHTML = toyInfo.count;
+      cardView.querySelector(".year").innerHTML = toyInfo.year;
+      cardView.querySelector(".shape").innerHTML = toyInfo.shape;
+      cardView.querySelector(".color").innerHTML = toyInfo.color;
+      cardView.querySelector(".size").innerHTML = toyInfo.size;
+      cardView.querySelector(".favorite").innerHTML = toyInfo.favorite
         ? "Да"
         : "Нет";
       cardView
         .querySelector(".toy-card__content__img")
         .setAttribute(
           "style",
-          `background-image: url(../assets/toys/${info.num}.png)`
+          `background-image: url(../assets/toys/${toyInfo.num}.png)`
         );
-    }
+    });
   }
 
   onFilterUpdated() {
     this.filter.store();
-
     this.applyFilter();
   }
 
   applyFilter() {
     document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
-      if (this.isSatisfy(card)) {
-        card.setAttribute("style", "display: block");
-      } else {
-        card.setAttribute("style", "display: none");
-      }
+      this.isSatisfy(card)
+        ? card.setAttribute("style", "display: block")
+        : card.setAttribute("style", "display: none");
     });
   }
 
@@ -126,8 +125,9 @@ class ToysView {
   }
 
   pickToys() {
-    let pickedToys = document.querySelector(".controls__selected__count");
+    const pickedToys = document.querySelector(".controls__selected__count");
     let count = 0;
+
     document.querySelectorAll(".toy-card").forEach((card) => {
       card.addEventListener("click", () => {
         card
@@ -135,10 +135,12 @@ class ToysView {
           .classList.contains("picked")
           ? count--
           : count++;
-        if (count > 2) {
-          this.showPopup("Извините, все слоты заполнены!")
+
+        if (count > 20) {
+          this.showPopup("Извините, все слоты заполнены!");
           return;
         }
+
         pickedToys.innerHTML = String(count);
         card
           .querySelector(".toy-card__content__img__flag")
@@ -148,15 +150,17 @@ class ToysView {
   }
 
   sortCards() {
+
     if (this.filter.sorting == "alphabeticOrder") {
-      Data.sort((a, b) => (a.name > b.name ? 1 : -1));
+      toyCardsData.sort((a, b) => (a.name > b.name ? 1 : -1));
     } else if (this.filter.sorting == "alphabeticOrderRevert") {
-      Data.sort((a, b) => (a.name < b.name ? 1 : -1));
+      toyCardsData.sort((a, b) => (a.name < b.name ? 1 : -1));
     } else if (this.filter.sorting == "ascendingOrder") {
-      Data.sort((a, b) => (a.year > b.year ? 1 : -1));
+      toyCardsData.sort((a, b) => (a.year > b.year ? 1 : -1));
     } else if (this.filter.sorting == "descendingOrder") {
-      Data.sort((a, b) => (a.year < b.year ? 1 : -1));
+      toyCardsData.sort((a, b) => (a.year < b.year ? 1 : -1));
     }
+
     this.createCards();
     this.applyFilter();
     this.pickToys();
@@ -166,16 +170,18 @@ class ToysView {
     const basicPart = document.querySelector(".main") as HTMLElement;
     const popupContent = document.querySelector(
       "#popup__window"
-      ) as HTMLTemplateElement;
-      basicPart.append(popupContent.content.cloneNode(true));
-      document.querySelector('.popup__error-message').innerHTML = errorText;
-      const popupButton = document.querySelector('.popup__button-ok');
-      popupButton.addEventListener('click', () => this.hidePopup());
+    ) as HTMLTemplateElement;
+
+    basicPart.append(popupContent.content.cloneNode(true));
+
+    document.querySelector(".popup__error-message").innerHTML = errorText;
+    const popupButton = document.querySelector(".popup__button-ok");
+    popupButton.addEventListener("click", () => this.hidePopup());
   }
 
   hidePopup() {
     const popup = document.querySelector(".popup__window__wrapper");
-    popup.setAttribute('style', 'display: none');
+    popup.setAttribute("style", "display: none");
   }
 }
 

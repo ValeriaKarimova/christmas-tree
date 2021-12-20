@@ -1,19 +1,19 @@
-
 @font-face {
-	font-family: 'Neucha';
-	src: url('fonts/Neucha-Regular.eot');
-	src: local('☺'), url('fonts/Neucha-Regular.woff') format('woff'), url('fonts/Neucha-Regular.ttf') format('truetype'), url('fonts/Neucha-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Neucha";
+  src: url("fonts/Neucha-Regular.eot");
+  src: local("☺"), url("fonts/Neucha-Regular.woff") format("woff"),
+    url("fonts/Neucha-Regular.ttf") format("truetype"),
+    url("fonts/Neucha-Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Steppe';
-    src: url('fonts/Steppe.eot'); 
-    src: url('fonts/Steppe.eot?#iefix') format('embedded-opentype'), 
-         url('fonts/Steppe.woff') format('woff'),
-         url('fonts/Steppe.ttf') format('truetype'); 
-             font-style: normal;
-    font-weight: normal;
+  font-family: "Steppe";
+  src: url("fonts/Steppe.eot");
+  src: url("fonts/Steppe.eot?#iefix") format("embedded-opentype"),
+    url("fonts/Steppe.woff") format("woff"),
+    url("fonts/Steppe.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
 }
-

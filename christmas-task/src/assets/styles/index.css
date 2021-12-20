@@ -1,249 +1,243 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-height: 100%;
+  height: 100%;
 }
 
 a {
-    text-decoration: none;
-    color: white;
-    font: 400 35px "Neucha", serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+  color: white;
+  font: 400 35px "Neucha", serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #278D9F;
-    
+  color: #278d9f;
 }
 
 body {
-    font-size: 18px;
-    font-weight: 400;
-    padding: 0;
-    margin: 0;
-    max-width: 100vw;
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.5;
-    color: #fff;
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  font: 400 18px "Open Sans", sans-serif;
+  line-height: 1.5;
 }
 
 .header,
 .footer {
-    background-color: #121C1E;
+  background-color: #121c1e;
 }
 
 .header {
-    position: relative;
-    z-index: 3;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
+  position: relative;
+  z-index: 3;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.header__element  {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-evenly;
+.header__element {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .navigation__main-page,
 .navigation__toys-page,
 .navigation__tree-page {
-    display: inline-block;
-    width: 100px;
-    height: 50px;
-    padding: 10px 170px 10px 0;
+  width: 100px;
+  height: 50px;
+  display: inline-block;
+  padding: 10px 170px 10px 0;
 }
 
 .navigation__main-page {
-    padding: 10px 0px;
-    margin-left: 20px;
-    height: 45px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(../svg/tree.svg);
+  height: 45px;
+  padding: 10px 0px;
+  margin-left: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../svg/tree.svg);
 }
 
 .controls__search {
-    width: 380px;
-    height: 40px;
-    padding: 5px 25px;
-    margin: 10px 0;
-    margin-right: 30px;
-    border-radius: 20px;
-    border: 1px solid #278D9F;
-    color: #fff;
-    font-size: 18px;
-    background-color: rgba(31, 112, 127, .3);
-    background-image: url(../svg/search.svg);
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-position: 330px center;
-    backdrop-filter: blur(6px);
+  width: 380px;
+  height: 40px;
+  padding: 5px 25px;
+  margin: 10px 0;
+  margin-right: 30px;
+  border: 1px solid #278d9f;
+  border-radius: 20px;
+  background-color: rgba(31, 112, 127, 0.3);
+  background-image: url(../svg/search.svg);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: 330px center;
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 18px;
 }
 
 .controls {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .controls__selected {
-    width: 48px;
-    height: 60px;
-    background-image: url(../svg/ball-2.svg);
-    background-size: 48px 60px;
-    background-position: left -8px;
-    background-repeat: no-repeat;
-    transition: .3s;
+  width: 48px;
+  height: 60px;
+  background-image: url(../svg/ball-2.svg);
+  background-size: 48px 60px;
+  background-position: left -8px;
+  background-repeat: no-repeat;
+  transition: 0.3s;
 }
 
 .controls__selected__count {
-    display: inline-block;
-    min-width: 40px;
-    height: 40px;
-    margin-top: 10px;
-    margin-left: 4px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 20px;
-    background-color: #278D9F;
+  min-width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background-color: #278d9f;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
 }
 
 .navigation__main-page:hover,
 .footer__element__github-link:hover,
 .footer__element__school-link:hover {
-    filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg) brightness(89%) contrast(90%);
+  filter: invert(57%) sepia(100%) saturate(329%) hue-rotate(141deg)
+    brightness(89%) contrast(90%);
 }
 
 .main {
-    min-height: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    background-image: url(../bg.jpg);
+  position: relative;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(../bg.jpg);
 }
 
-
-
 .main__intro__ball1 {
-    width: 500px;
-    height: 500px;
-    left: calc(50% - 550px);
-    top: 150px;
-    background-image: url(../ball/1.png);
+  left: calc(50% - 550px);
+  top: 150px;
+  width: 500px;
+  height: 500px;
+  background-image: url(../ball/1.png);
 }
 
 .main__intro__ball1,
 .main__intro__ball2 {
-    position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .main__intro__ball2 {
-    width: 300px;
-    height: 300px;
-    left: calc(50% + 150px);
-    top: 150px;
-    background-image: url(../ball/2.png);
+  left: calc(50% + 150px);
+  top: 150px;
+  width: 300px;
+  height: 300px;
+  background-image: url(../ball/2.png);
 }
 
 .main__intro__ball1::before,
 .main__intro__ball2::before {
-    content: "";
-    position: absolute;
-    background-color: #aaa;
-    z-index: 0;
+  position: absolute;
+  z-index: 0;
+  content: "";
+  background-color: #aaa;
 }
 
 .main__intro__ball1::before {
-    top: -210px;
-    left: calc(50% - 47px);
-    width: 4px;
-    height: 220px;
-    width: 5px;
+  top: -210px;
+  left: calc(50% - 47px);
+  height: 220px;
+  width: 5px;
 }
 
 .main__intro__ball2::before {
-    top: -205px;
-    left: calc(50% - 32px);
-    width: 4px;
-    height: 210px;
-    width: 5px;
+  top: -205px;
+  left: calc(50% - 32px);
+  height: 210px;
+  width: 5px;
 }
 
 .main__intro {
-    margin-top: 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+  display: flex;
+  margin-top: 260px;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
 .main__intro__block-text {
-    font: 400 53px "Neucha", serif;
-    padding: 15px;
+  padding: 15px;
+  font: 400 53px "Neucha", serif;
 }
 
 .main__intro__block-text,
 .main__intro__block__start-button {
-    border: 2px solid #278D9F;
-    border-radius: 15px;
-    backdrop-filter: blur(6px);
-    background-color: rgba(31, 112, 127, .3);
-    text-align: center;
+  border: 2px solid #278d9f;
+  border-radius: 15px;
+  backdrop-filter: blur(6px);
+  background-color: rgba(31, 112, 127, 0.3);
+  text-align: center;
 }
 
 .main__intro__block__start-button {
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 25px;
-    padding: 10px 30px;
-    outline: 1px solid;
+  padding: 10px 30px;
+  outline: 1px solid;
+  color: #fff;
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 .main__intro__block__start-button:hover,
 .button__reset:hover {
-    transition: .7s;
-    transform: scale(1.1);
-    cursor: pointer;
-    outline-color: rgba(255, 255, 255, 0);
-    outline-offset: 15px;
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  transform: scale(1.1);
+  transition: 0.7s;
+  cursor: pointer;
 }
 
 .footer {
-    height: 60px;
-    display: flex;
-    justify-content: space-between; 
-    width: 100%;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer__element {
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 .footer__element__github-link {
-    display: inline-block;
-    width: 110px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(../svg/github.svg);
+  display: inline-block;
+  width: 110px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../svg/github.svg);
 }
 
 .footer__element__school-link {
-    display: inline-block;
-    width: 110px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(../svg/rss.svg);
+  display: inline-block;
+  width: 110px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(../svg/rss.svg);
 }

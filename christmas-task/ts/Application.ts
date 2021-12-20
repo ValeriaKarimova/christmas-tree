@@ -14,15 +14,19 @@ class Application {
   init() {
     const introView = new IntroView(() => this.onToysClick());
     introView.init();
+
     const homeButton = document.querySelector(
       ".navigation__main-page"
     ) as HTMLElement;
+
     const treeButton = document.querySelector(
       ".navigation__tree-page"
     ) as HTMLElement;
+
     const toysButton = document.querySelector(
       ".navigation__toys-page"
     ) as HTMLElement;
+
     toysButton.addEventListener("click", () => this.onToysClick());
     treeButton.addEventListener("click", () => this.onTreeClick());
     homeButton.addEventListener("click", () => this.onHomeClick());
