@@ -1,12 +1,15 @@
 import toyCardsData from "../src/data.json";
 import Filter from "./Filter";
+import Cart from "./Cart";
 import FilterController from "./FilterController";
 
 class ToysView {
   filter: Filter;
+  cart: Cart;
 
-  constructor(filter: Filter) {
+  constructor(filter: Filter, cart: Cart) {
     this.filter = filter;
+    this.cart = cart;
   }
 
   init() {
@@ -19,6 +22,7 @@ class ToysView {
 
     const filterController = new FilterController(
       this.filter,
+      this.cart,
       () => this.onFilterUpdated(),
       () => this.sortCards()
     );
@@ -39,6 +43,12 @@ class ToysView {
       ) as HTMLDivElement;
 
       cardHolder.append(cardView);
+      cardView.setAttribute("data-num", `${toyInfo.num}`);
+
+      if(this.cart.toyNums.includes(toyInfo.num)) {
+        cardView.querySelector('.toy-card__content__img__flag').classList.add('picked');
+      }
+
       cardView.querySelector(".toy-card__text").innerHTML = toyInfo.name;
       cardView.querySelector(".amount").innerHTML = toyInfo.count;
       cardView.querySelector(".year").innerHTML = toyInfo.year;
@@ -79,7 +89,8 @@ class ToysView {
       if (
         card
           .querySelector(".toy-card__text")
-          .innerHTML.search(this.filter.userInput) == -1
+          .innerHTML.toLowerCase()
+          .search(this.filter.userInput) == -1
       ) {
         result = false;
       }
@@ -127,21 +138,28 @@ class ToysView {
   pickToys() {
     const pickedToys = document.querySelector(".controls__selected__count");
     let count = 0;
-
-    document.querySelectorAll(".toy-card").forEach((card) => {
+    const selectedToys = this.cart.toyNums;
+    document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
       card.addEventListener("click", () => {
-        card
-          .querySelector(".toy-card__content__img__flag")
-          .classList.contains("picked")
-          ? count--
-          : count++;
+        const currentCardNum = card.dataset.num;
 
-        if (count > 20) {
-          this.showPopup("Извините, все слоты заполнены!");
-          return;
+        if (
+          card
+            .querySelector(".toy-card__content__img__flag")
+            .classList.contains("picked")
+        ) {
+          selectedToys.splice(selectedToys.indexOf(currentCardNum), 1);
+        } else {
+          if (selectedToys.length > 20) {
+            this.showPopup();
+            return;
+          }
+
+          selectedToys.push(currentCardNum);
+          this.cart.store();
         }
 
-        pickedToys.innerHTML = String(count);
+        pickedToys.innerHTML = String(selectedToys.length);
         card
           .querySelector(".toy-card__content__img__flag")
           .classList.toggle("picked");
@@ -150,7 +168,6 @@ class ToysView {
   }
 
   sortCards() {
-
     if (this.filter.sorting == "alphabeticOrder") {
       toyCardsData.sort((a, b) => (a.name > b.name ? 1 : -1));
     } else if (this.filter.sorting == "alphabeticOrderRevert") {
@@ -166,7 +183,7 @@ class ToysView {
     this.pickToys();
   }
 
-  showPopup(errorText: string) {
+  showPopup() {
     const basicPart = document.querySelector(".main") as HTMLElement;
     const popupContent = document.querySelector(
       "#popup__window"
@@ -174,14 +191,18 @@ class ToysView {
 
     basicPart.append(popupContent.content.cloneNode(true));
 
-    document.querySelector(".popup__error-message").innerHTML = errorText;
+    document.querySelector(".popup__error-message").innerHTML =
+      '"Извините, все слоты заполнены!"';
     const popupButton = document.querySelector(".popup__button-ok");
     popupButton.addEventListener("click", () => this.hidePopup());
   }
 
   hidePopup() {
-    const popup = document.querySelector(".popup__window__wrapper");
-    popup.setAttribute("style", "display: none");
+    const basicPart = document.querySelector(".main") as HTMLElement;
+    const popup = document.querySelector(
+      ".popup__window__wrapper"
+    ) as HTMLElement;
+    basicPart.removeChild(popup);
   }
 }
 

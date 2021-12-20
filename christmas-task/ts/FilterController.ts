@@ -1,9 +1,11 @@
 import Filter from "./Filter";
 import * as noUiSlider from "nouislider";
 import "../src/assets/styles/nouislider.css";
+import Cart from "./Cart";
 
 class FilterController {
   filter: Filter;
+  cart: Cart;
   callback: () => void;
   sortingCallback: () => void;
   checkBox: HTMLInputElement;
@@ -13,10 +15,12 @@ class FilterController {
 
   constructor(
     filter: Filter,
+    cart: Cart,
     callback: () => void,
     sortingCallback: () => void
   ) {
     this.filter = filter;
+    this.cart = cart;
     this.callback = callback;
     this.sortingCallback = sortingCallback;
 
@@ -58,7 +62,7 @@ class FilterController {
       ".controls__search"
     ) as HTMLInputElement;
     searchInput.addEventListener("input", () => {
-      this.filter.userInput = searchInput.value.trim() as string;
+      this.filter.userInput = searchInput.value.trim().toLowerCase() as string;
       this.callback();
     });
   }
@@ -221,8 +225,11 @@ class FilterController {
 
   resetStorage() {
     localStorage.clear();
-    document.querySelector(".controls__selected__count").innerHTML = "0";
+    this.cart.toyNums.length = 0;
     this.resetFiltration();
+    document.querySelector(".controls__selected__count").innerHTML = String(
+      this.cart.toyNums.length
+    );
     document.querySelectorAll(".toy-card").forEach((card) => {
       card
         .querySelector(".toy-card__content__img__flag")

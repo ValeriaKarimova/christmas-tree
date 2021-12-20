@@ -2,18 +2,26 @@ import IntroView from "./IntroView";
 import TreeView from "./TreeView";
 import ToysView from "./ToysView";
 import Filter from "./Filter";
+import Cart from "./Cart";
 
 class Application {
   filter: Filter;
+  cart: Cart;
 
   constructor() {
     this.filter = new Filter();
     this.filter.restore();
+    this.cart = new Cart();
+    this.cart.restore();
   }
 
   init() {
     const introView = new IntroView(() => this.onToysClick());
     introView.init();
+
+    document.querySelector(".controls__selected__count").innerHTML = String(
+      this.cart.toyNums.length
+    );
 
     const homeButton = document.querySelector(
       ".navigation__main-page"
@@ -33,7 +41,7 @@ class Application {
   }
 
   onToysClick() {
-    const toysView = new ToysView(this.filter);
+    const toysView = new ToysView(this.filter, this.cart);
     toysView.init();
     toysView.applyFilter();
   }
@@ -44,7 +52,6 @@ class Application {
   }
 
   onTreeClick() {
-    console.log("onTreeClick");
     const treeView = new TreeView();
     treeView.init();
   }

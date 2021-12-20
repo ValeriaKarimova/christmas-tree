@@ -20,7 +20,13 @@
           <a class="navigation__tree-page" href="#">Ёлка</a>
         </nav>
         <div class="header__element controls">
-          <input class="controls__search" type="search" autocomplete="off" />
+          <input
+            class="controls__search"
+            type="search"
+            autocomplete="off"
+            placeholder="Toys"
+            autofocus="true"
+          />
           <div class="controls__selected">
             <span class="controls__selected__count">0</span>
           </div>
@@ -48,10 +54,10 @@
               <h4 class="filters-block__color__text">Цвет:</h4>
               <div class="color__buttons-wrapper">
                 <button class="color__button color__white">белый</button>
-              <button class="color__button color__yellow">желтый</button>
-              <button class="color__button color__red">красный</button>
-              <button class="color__button color__blue">синий</button>
-              <button class="color__button color__green">зелёный</button>
+                <button class="color__button color__yellow">желтый</button>
+                <button class="color__button color__red">красный</button>
+                <button class="color__button color__blue">синий</button>
+                <button class="color__button color__green">зелёный</button>
               </div>
             </div>
 
@@ -59,14 +65,14 @@
               <h4 class="filters-block__size__text">Размер:</h4>
               <div class="size__buttons-wrapper">
                 <button class="size__button size__large">большой</button>
-              <button class="size__button size__average">средний</button>
-              <button class="size__button size__small">малый</button>
+                <button class="size__button size__average">средний</button>
+                <button class="size__button size__small">малый</button>
               </div>
             </div>
 
             <div class="filters-block__favorite favorite">
               <h4 class="filters-block__favorite__text">Любимые:</h4>
-              <input class="favorite__checkbox-input" type="checkbox">
+              <input class="favorite__checkbox-input" type="checkbox" />
               <label for="checkbox" class="favorite__checkbox"></label>
             </div>
           </div>
@@ -99,9 +105,7 @@
           <div class="filters-block filters-block__sort">
             <h2 class="filters-block-text">Сортировка</h2>
             <select class="filters-block__sort__select selection">
-              <option value="ascendingOrder" selected>
-                По возрастанию
-              </option>
+              <option value="ascendingOrder" selected>По возрастанию</option>
               <option value="descendingOrder">По убыванию</option>
               <option value="alphabeticOrder">По имени от А до Я</option>
               <option value="alphabeticOrderRevert">По имени от Я до А</option>
@@ -110,9 +114,9 @@
               <button class="button__reset reset-settings" type="reset">
                 Сброс настроек
               </button>
-            <button class="button__reset reset-filters" type="reset">
-              Сброс фильтров
-            </button>
+              <button class="button__reset reset-filters" type="reset">
+                Сброс фильтров
+              </button>
             </div>
           </div>
         </div>
@@ -155,11 +159,11 @@
 
       <template id="popup__window">
         <div class="popup__window__wrapper">
-        <div class="popup">
-          <h6 class="popup__error-message">ggggggggg</h6>
-          <button class="popup__button-ok" type="submit">OK</button>
+          <div class="popup">
+            <h6 class="popup__error-message"></h6>
+            <button class="popup__button-ok" type="submit">OK</button>
+          </div>
         </div>
-      </div>
       </template>
 
       <footer class="footer">
