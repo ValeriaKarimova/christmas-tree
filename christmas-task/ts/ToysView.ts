@@ -2,6 +2,7 @@ import toyCardsData from "../src/data.json";
 import Filter from "./Filter";
 import Cart from "./Cart";
 import FilterController from "./FilterController";
+import Popup from "./Popup";
 
 class ToysView {
   filter: Filter;
@@ -18,6 +19,7 @@ class ToysView {
     const pageContent = document.querySelector(
       "#toys__page"
     ) as HTMLTemplateElement;
+
     basicPart.append(pageContent.content.cloneNode(true));
 
     const filterController = new FilterController(
@@ -27,6 +29,7 @@ class ToysView {
       () => this.sortCards()
     );
     filterController.init();
+
     this.sortCards();
   }
 
@@ -137,8 +140,9 @@ class ToysView {
 
   pickToys() {
     const pickedToys = document.querySelector(".controls__selected__count");
-    let count = 0;
     const selectedToys = this.cart.toyNums;
+    const popup = new Popup();
+
     document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
       card.addEventListener("click", () => {
         const currentCardNum = card.dataset.num;
@@ -150,8 +154,8 @@ class ToysView {
         ) {
           selectedToys.splice(selectedToys.indexOf(currentCardNum), 1);
         } else {
-          if (selectedToys.length > 20) {
-            this.showPopup();
+          if (selectedToys.length > 19) {
+            popup.showPopup();
             return;
           }
 
@@ -181,28 +185,6 @@ class ToysView {
     this.createCards();
     this.applyFilter();
     this.pickToys();
-  }
-
-  showPopup() {
-    const basicPart = document.querySelector(".main") as HTMLElement;
-    const popupContent = document.querySelector(
-      "#popup__window"
-    ) as HTMLTemplateElement;
-
-    basicPart.append(popupContent.content.cloneNode(true));
-
-    document.querySelector(".popup__error-message").innerHTML =
-      '"Извините, все слоты заполнены!"';
-    const popupButton = document.querySelector(".popup__button-ok");
-    popupButton.addEventListener("click", () => this.hidePopup());
-  }
-
-  hidePopup() {
-    const basicPart = document.querySelector(".main") as HTMLElement;
-    const popup = document.querySelector(
-      ".popup__window__wrapper"
-    ) as HTMLElement;
-    basicPart.removeChild(popup);
   }
 }
 

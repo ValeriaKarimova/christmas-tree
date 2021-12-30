@@ -6,8 +6,10 @@ import Cart from "./Cart";
 class FilterController {
   filter: Filter;
   cart: Cart;
+
   callback: () => void;
   sortingCallback: () => void;
+
   checkBox: HTMLInputElement;
   selectedOption: HTMLInputElement;
   yearSlider: noUiSlider.target;
@@ -16,11 +18,13 @@ class FilterController {
   constructor(
     filter: Filter,
     cart: Cart,
+
     callback: () => void,
     sortingCallback: () => void
   ) {
     this.filter = filter;
     this.cart = cart;
+
     this.callback = callback;
     this.sortingCallback = sortingCallback;
 
@@ -61,6 +65,7 @@ class FilterController {
     const searchInput = document.querySelector(
       ".controls__search"
     ) as HTMLInputElement;
+
     searchInput.addEventListener("input", () => {
       this.filter.userInput = searchInput.value.trim().toLowerCase() as string;
       this.callback();
@@ -132,6 +137,7 @@ class FilterController {
 
   handleClicks(wrapper: string, filtrationType: Array<string>) {
     const filterButtons = document.querySelector(wrapper) as HTMLElement;
+
     filterButtons.addEventListener("click", () =>
       this.onFilterButtonClick(event, filtrationType)
     );
@@ -191,6 +197,7 @@ class FilterController {
 
   updateButtonGroup(groupClassName: string, selectedTypes: Array<string>) {
     const buttons = document.querySelectorAll(groupClassName);
+
     buttons.forEach((button) => {
       button.classList.remove("active");
       const isSelected = selectedTypes.includes(button.innerHTML);
@@ -225,8 +232,10 @@ class FilterController {
 
   resetStorage() {
     localStorage.clear();
+
     this.cart.toyNums.length = 0;
     this.resetFiltration();
+    
     document.querySelector(".controls__selected__count").innerHTML = String(
       this.cart.toyNums.length
     );

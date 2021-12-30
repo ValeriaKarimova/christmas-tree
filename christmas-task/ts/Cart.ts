@@ -14,6 +14,7 @@ class Cart {
     if (selectedToysData === undefined || selectedToysData === null) {
       return;
     }
+    
     const json = JSON.parse(selectedToysData);
     this.toyNums = json.toyNums;
   }

@@ -11,6 +11,7 @@ class Application {
   constructor() {
     this.filter = new Filter();
     this.filter.restore();
+    
     this.cart = new Cart();
     this.cart.restore();
   }

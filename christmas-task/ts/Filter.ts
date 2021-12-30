@@ -29,9 +29,11 @@ class Filter {
 
   restore() {
     const savedData = localStorage.getItem("filter");
+
     if (savedData === undefined || savedData === null) {
       return;
     }
+    
     const json = JSON.parse(savedData);
     this.shape = json.shape;
     this.color = json.color;
