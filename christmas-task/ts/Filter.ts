@@ -3,10 +3,8 @@ class Filter {
   color: Array<string>;
   size: Array<string>;
   isFavorite: boolean;
-  countMin: number;
-  countMax: number;
-  yearMin: number;
-  yearMax: number;
+  purchaseYear: {min: number, max: number};
+  toysCount: {min: number, max: number};
   sorting: string;
   userInput: string;
 
@@ -15,10 +13,8 @@ class Filter {
     this.color = [];
     this.size = [];
     this.isFavorite = false;
-    this.countMin = 1;
-    this.countMax = 12;
-    this.yearMin = 1940;
-    this.yearMax = 2020;
+    this.purchaseYear = {min: 1940, max:2020};
+    this.toysCount = {min: 1, max: 12};
     this.sorting = "ascendingOrder";
     this.userInput = "";
   }
@@ -33,16 +29,14 @@ class Filter {
     if (savedData === undefined || savedData === null) {
       return;
     }
-    
+
     const json = JSON.parse(savedData);
     this.shape = json.shape;
     this.color = json.color;
     this.size = json.size;
     this.isFavorite = json.isFavorite;
-    this.countMin = json.countMin;
-    this.countMax = json.countMax;
-    this.yearMin = json.yearMin;
-    this.yearMax = json.yearMax;
+    this.purchaseYear = json.purchaseYear;
+    this.toysCount = json.toysCount;
     this.sorting = json.sorting;
   }
 }

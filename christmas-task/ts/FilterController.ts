@@ -57,7 +57,7 @@ class FilterController {
     this.initUserInput();
     this.getSortValue();
     this.onResetFilterClick();
-    this.onResetStorageClick();
+    this.onResetSettingsClick();
     this.updateFilterView();
   }
 
@@ -73,13 +73,14 @@ class FilterController {
   }
 
   initCountSlider() {
+    const TOYS_COUNT = {min: 1, max: 12};
     noUiSlider.create(this.countSlider, {
-      start: [this.filter.countMin, this.filter.countMax],
+      start: [this.filter.toysCount.min, this.filter.toysCount.max],
       connect: true,
       step: 1,
       range: {
-        min: [1],
-        max: [12],
+        min: [TOYS_COUNT.min],
+        max: [TOYS_COUNT.max],
       },
       format: {
         to: function (value: number) {
@@ -91,27 +92,23 @@ class FilterController {
       },
     });
 
-    const self = this;
-
-    this.countSlider.noUiSlider.on(
-      "update",
-      function (values: [], handle: number) {
-        self.filter.countMin = values.at(0);
-        self.filter.countMax = values.at(1);
-        self.callback();
-        self.updateSliderView();
-      }
-    );
+    this.countSlider.noUiSlider.on("update", (values: []) => {
+      this.filter.toysCount.min = values.at(0);
+      this.filter.toysCount.max = values.at(1);
+      this.callback();
+      this.updateSliderView();
+    });
   }
 
   initYearSlider() {
+    const PURCHASE_YEAR = {min: 1940, max: 2020};
     noUiSlider.create(this.yearSlider, {
-      start: [this.filter.yearMin, this.filter.yearMax],
+      start: [this.filter.purchaseYear.min, this.filter.purchaseYear.max],
       step: 10,
       connect: true,
       range: {
-        min: [1940],
-        max: [2020],
+        min: [PURCHASE_YEAR.min],
+        max: [PURCHASE_YEAR.max],
       },
       format: {
         to: function (value: number) {
@@ -122,17 +119,13 @@ class FilterController {
         },
       },
     });
-    const self = this;
 
-    this.yearSlider.noUiSlider.on(
-      "update",
-      function (values: [], handle: number) {
-        self.filter.yearMin = values.at(0);
-        self.filter.yearMax = values.at(1);
-        self.callback();
-        self.updateSliderView();
-      }
-    );
+    this.yearSlider.noUiSlider.on("update", (values: []) => {
+      this.filter.purchaseYear.min = values.at(0);
+      this.filter.purchaseYear.max = values.at(1);
+      this.callback();
+      this.updateSliderView();
+    });
   }
 
   handleClicks(wrapper: string, filtrationType: Array<string>) {
@@ -169,10 +162,13 @@ class FilterController {
     this.selectedOption.value = this.filter.sorting;
 
     this.countSlider.noUiSlider.set([
-      this.filter.countMin,
-      this.filter.countMax,
+      this.filter.toysCount.min,
+      this.filter.toysCount.max,
     ]);
-    this.yearSlider.noUiSlider.set([this.filter.yearMin, this.filter.yearMax]);
+    this.yearSlider.noUiSlider.set([
+      this.filter.purchaseYear.min,
+      this.filter.purchaseYear.max,
+    ]);
   }
 
   updateSliderView() {
@@ -189,10 +185,10 @@ class FilterController {
       ".slider__year__base__output-max"
     ) as HTMLElement;
 
-    countMinOutput.innerHTML = String(this.filter.countMin);
-    countMaxOutput.innerHTML = String(this.filter.countMax);
-    yearMinOutput.innerHTML = String(this.filter.yearMin);
-    yearMaxOutput.innerHTML = String(this.filter.yearMax);
+    countMinOutput.innerHTML = String(this.filter.toysCount.min);
+    countMaxOutput.innerHTML = String(this.filter.toysCount.max);
+    yearMinOutput.innerHTML = String(this.filter.purchaseYear.min);
+    yearMaxOutput.innerHTML = String(this.filter.purchaseYear.max);
   }
 
   updateButtonGroup(groupClassName: string, selectedTypes: Array<string>) {
@@ -222,20 +218,20 @@ class FilterController {
     resetFilterButton.addEventListener("click", () => this.resetFiltration());
   }
 
-  onResetStorageClick() {
-    const resetStorageButton = document.querySelector(
+  onResetSettingsClick() {
+    const resetSettingsButton = document.querySelector(
       ".reset-settings"
     ) as HTMLElement;
 
-    resetStorageButton.addEventListener("click", () => this.resetStorage());
+    resetSettingsButton.addEventListener("click", () => this.resetSettings());
   }
 
-  resetStorage() {
+  resetSettings() {
     localStorage.clear();
 
     this.cart.toyNums.length = 0;
     this.resetFiltration();
-    
+
     document.querySelector(".controls__selected__count").innerHTML = String(
       this.cart.toyNums.length
     );
@@ -251,10 +247,8 @@ class FilterController {
     this.filter.color.length = 0;
     this.filter.size.length = 0;
     this.filter.isFavorite = false;
-    this.filter.countMin = 1;
-    this.filter.countMax = 12;
-    this.filter.yearMin = 1940;
-    this.filter.yearMax = 2020;
+    this.filter.purchaseYear = { min: 1940, max: 2020 };
+    this.filter.toysCount = { min: 1, max: 12 };
 
     this.updateFilterView();
     this.callback();

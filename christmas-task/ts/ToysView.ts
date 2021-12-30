@@ -127,11 +127,11 @@ class ToysView {
       result = false;
     }
 
-    if (amount < this.filter.countMin || amount > this.filter.countMax) {
+    if (amount < this.filter.toysCount.min || amount > this.filter.toysCount.max) {
       result = false;
     }
 
-    if (year < this.filter.yearMin || year > this.filter.yearMax) {
+    if (year < this.filter.purchaseYear.min || year > this.filter.purchaseYear.max) {
       result = false;
     }
 
@@ -142,6 +142,7 @@ class ToysView {
     const pickedToys = document.querySelector(".controls__selected__count");
     const selectedToys = this.cart.toyNums;
     const popup = new Popup();
+    const MAXTOYS = 20;
 
     document.querySelectorAll(".toy-card").forEach((card: HTMLElement) => {
       card.addEventListener("click", () => {
@@ -154,7 +155,7 @@ class ToysView {
         ) {
           selectedToys.splice(selectedToys.indexOf(currentCardNum), 1);
         } else {
-          if (selectedToys.length > 19) {
+          if (selectedToys.length + 1 > MAXTOYS) {
             popup.showPopup();
             return;
           }
