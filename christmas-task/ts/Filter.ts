@@ -1,3 +1,5 @@
+import Sorting from "./Sorting";
+
 class Filter {
   shape: Array<string>;
   color: Array<string>;
@@ -15,7 +17,7 @@ class Filter {
     this.isFavorite = false;
     this.purchaseYear = {min: 1940, max:2020};
     this.toysCount = {min: 1, max: 12};
-    this.sorting = "ascendingOrder";
+    this.sorting = Sorting.ascending;
     this.userInput = "";
   }
 
