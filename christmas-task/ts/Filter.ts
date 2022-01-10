@@ -1,4 +1,5 @@
 import Sorting from "./Sorting";
+import { TOYS_COUNT, PURCHASE_YEAR } from "./Constants";
 
 class Filter {
   shape: Array<string>;
@@ -15,8 +16,8 @@ class Filter {
     this.color = [];
     this.size = [];
     this.isFavorite = false;
-    this.purchaseYear = {min: 1940, max:2020};
-    this.toysCount = {min: 1, max: 12};
+    this.purchaseYear = PURCHASE_YEAR;
+    this.toysCount = TOYS_COUNT;
     this.sorting = Sorting.ascending;
     this.userInput = "";
   }

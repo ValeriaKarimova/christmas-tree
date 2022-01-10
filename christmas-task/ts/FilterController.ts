@@ -2,6 +2,7 @@ import Filter from "./Filter";
 import * as noUiSlider from "nouislider";
 import "../src/assets/styles/nouislider.css";
 import Cart from "./Cart";
+import { TOYS_COUNT, PURCHASE_YEAR } from "./Constants";
 
 class FilterController {
   filter: Filter;
@@ -73,7 +74,6 @@ class FilterController {
   }
 
   initCountSlider() {
-    const TOYS_COUNT = {min: 1, max: 12};
     noUiSlider.create(this.countSlider, {
       start: [this.filter.toysCount.min, this.filter.toysCount.max],
       connect: true,
@@ -101,7 +101,6 @@ class FilterController {
   }
 
   initYearSlider() {
-    const PURCHASE_YEAR = {min: 1940, max: 2020};
     noUiSlider.create(this.yearSlider, {
       start: [this.filter.purchaseYear.min, this.filter.purchaseYear.max],
       step: 10,
@@ -247,8 +246,8 @@ class FilterController {
     this.filter.color.length = 0;
     this.filter.size.length = 0;
     this.filter.isFavorite = false;
-    this.filter.purchaseYear = { min: 1940, max: 2020 };
-    this.filter.toysCount = { min: 1, max: 12 };
+    this.filter.purchaseYear = PURCHASE_YEAR;
+    this.filter.toysCount = TOYS_COUNT;
 
     this.updateFilterView();
     this.callback();
